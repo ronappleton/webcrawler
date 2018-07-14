@@ -5,8 +5,8 @@ Simple web crawler for retrieving site links
 This web crawler package is a simple package, designed for taking websites and extracting
 the files it can find from the html that the site provides.
 
-It is a simple incarnation because it has no concept yet of internal and external links
-which means its going to just keep going on a normal site.
+It is restricted to the source domain by default, can be altered using the restrict_domain option
+of the crawl method.
 
 It was built for handling known self linking sites, although I will add controls to prevent
 external crawling when required.
