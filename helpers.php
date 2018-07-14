@@ -1627,4 +1627,22 @@ if (!function_exists('is_tld')) {
 
         return contains($domains, $string);
     }
+
+    if (!function_exists('is_cli'))
+    {
+        function is_cli()
+        {
+            return (php_sapi_name() === 'cli');
+        }
+    }
+
+    if (!function_exists('cli_message'))
+    {
+        function cli_message($message)
+        {
+            if (is_cli()) {
+                echo $message . PHP_EOL;
+            }
+        }
+    }
 }

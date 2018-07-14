@@ -34,10 +34,10 @@ class Crawler
             $href = $link->getAttribute('href');
             if (!contains($href, '..')) {
                 if (is_remote_file($href)) {
-                    echo 'Remote File! - ' . $href . PHP_EOL;
+                    cli_message('Remote File! - ' . $href);
                     $page->addFile(new RemoteFileObject($url, $href));
                 } else {
-                    echo 'Remote Directory - ' . $href . PHP_EOL;
+                    cli_message('Remote Directory - ' . $href);
                     $page->addDirectory(new RemoteDirectoryObject($url, $href));
                 }
             }
