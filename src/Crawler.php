@@ -15,13 +15,14 @@ class Crawler
     private $crawl_end;
     private $crawl_time;
 
-    public function crawl($url = '')
+    public function crawl($url = '', $restrict_domain = true)
     {
         if (empty($url)) {
             return null;
         }
 
         $page = new WebPage($url);
+
         $this->crawl_start = Carbon::now();
 
         $dom_document = new \DOMDocument();
@@ -46,6 +47,11 @@ class Crawler
         $this->pages[] = $page;
 
         foreach ($page->getDirectories() as $directory) {
+            if ($restrict_domain) {
+                if (!contains($directory->getPath(), $url)) {
+                    continue;
+                }
+            }
             $this->crawl($directory->getPath());
         }
         $this->crawl_end = Carbon::now();
