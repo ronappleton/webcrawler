@@ -25,4 +25,8 @@ crawlers.
  - Provides minimal count statistic
  - Exports data collected as array
  - Exports data collected as Json
+ 
+## Warning
+
+Use this at your own risk, please don't crawl sites of people that are not expecting it, the risk is all yours
 
