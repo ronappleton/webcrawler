@@ -1,0 +1,21 @@
+{
+    "name": "ronappleton/webcrawler",
+    "authors": [
+        {
+            "name": "Ron Appleton",
+            "email": "ronald.appleton@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "nesbot/carbon": "^1.32"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+      "files": [
+        "helpers.php"
+      ]
+    }
+}
