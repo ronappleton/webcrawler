@@ -7,7 +7,7 @@ use App\Crawler;
 class Runner {
 
     private $urls = [
-        "http://google.com"
+        "http://dl.upload8.net/Serial/"
     ];
 
     public function run() {

@@ -15,7 +15,7 @@ class Crawler
     private $crawl_end;
     private $crawl_time;
 
-    public function crawl($url = '', $restrict_domain = true)
+    public function crawl($url = '', $restrict_domain = true, $ignore_web_files = true)
     {
         if (empty($url)) {
             return null;
@@ -33,6 +33,9 @@ class Crawler
             return;
         }
 
+        // Suppress annoying markup warnings
+        libxml_use_internal_errors(true);
+
         $dom_document->loadHTML($html);
 
         $links = $dom_document->getElementsByTagName('a');
@@ -40,10 +43,10 @@ class Crawler
         foreach ($links as $link) {
             $href = $link->getAttribute('href');
             if (!contains($href, '..')) {
-                if (is_remote_file($href)) {
+                if (is_remote_file($href) && !is_web_file($href)) {
                     cli_message('Remote File! - ' . $href);
                     $page->addFile(new RemoteFileObject($url, $href));
-                } elseif (!contains($href, 'http') || contains($href, 'https')) {
+                } elseif ((!contains($href, 'http') || contains($href, 'https')) && !is_a_remote_file($href)) {
                     cli_message('Remote Directory - ' . $href);
                     $page->addDirectory(new RemoteDirectoryObject($url, $href));
                 }

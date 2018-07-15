@@ -28,12 +28,83 @@ if (!function_exists('in_values')) {
     }
 }
 
+if (!function_exists('is_a_remote_file'))
+{
+    function is_a_remote_file($path) {
+        if (contains($path, '?')) {
+            return true;
+        }
+
+        $path_parts = explode('.', $path);
+
+        if (count($path_parts) > 1) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+if (!function_exists('is_web_file'))
+{
+    function is_web_file($path)
+    {
+        $web_files = [
+            'php',
+            'phtml',
+            'asp',
+            'css',
+            'js',
+            'jws',
+            'htm',
+            'html',
+            'cshtml',
+            'csr',
+            'dhtml',
+            'xml',
+            'htx',
+            'htc',
+            'jhtml',
+            'jss',
+            'php2',
+            'php3',
+            'php4',
+            'php5',
+            'phtm',
+            'xhtm',
+            'xhtml',
+            'xht',
+            'xpd',
+            'xss',
+        ];
+
+        $url_parts = parse_url($path);
+
+        if (empty($url_parts['path'])) {
+            return false;
+        }
+
+        $path_parts = explode('.', $url_parts['path']);
+
+        if (count($path_parts) <= 1) {
+            return false;
+        }
+
+        $extension = $path_parts[count($path_parts) - 1];
+
+        if (contains($web_files, $extension)) {
+            return true;
+        }
+    }
+}
 /**
  * This function tests against patterns to see if this
  * path could be a file, it is used for remote links.
  */
 if (!function_exists('is_remote_file')) {
     function is_remote_file($path, Array $extensions = []) {
+
+
         $url_parts = parse_url($path);
 
         if (empty($url_parts['path'])) {
