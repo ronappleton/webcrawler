@@ -27,7 +27,13 @@ class Crawler
 
         $dom_document = new \DOMDocument();
 
-        $dom_document->loadHTML(Client::getPage($page->url()));
+        $html = Client::getPage($page->url());
+
+        if (empty($html)) {
+            return;
+        }
+
+        $dom_document->loadHTML($html);
 
         $links = $dom_document->getElementsByTagName('a');
 

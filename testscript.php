@@ -7,7 +7,7 @@ use App\Crawler;
 class Runner {
 
     private $urls = [
-        "http://sometestsite.com"
+        "http://google.com"
     ];
 
     public function run() {
