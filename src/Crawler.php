@@ -100,6 +100,10 @@ class Crawler
 
     public function logCrawling($filepath = null, $filename = null, $directories = true, $files = true, $json = true, $pretty = true)
     {
+        if (empty($this->pages)) {
+            return null;
+        }
+
         if (empty($filename)) {
             $filename = date('Y_m_d__H_m_s__') . 'site_crawl.json';
         }
@@ -117,9 +121,16 @@ class Crawler
 
         $handle = fopen($fullpath, 'w');
 
-        fwrite($handle, $this->toJson(false, true,true));
+        if ($json) {
+            fwrite($handle, $this->toJson($directories, $files,$pretty));
+        } else {
+            fwrite($handle, serialize($this->toArray($directories, $files)));
+        }
+
 
         fclose($handle);
+
+        return true;
     }
 
 }
