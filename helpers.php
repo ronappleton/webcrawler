@@ -35,6 +35,11 @@ if (!function_exists('in_values')) {
 if (!function_exists('is_remote_file')) {
     function is_remote_file($path, Array $extensions = []) {
         $url_parts = parse_url($path);
+
+        if (empty($url_parts['path'])) {
+            return false;
+        }
+
         $path_parts = explode('.', $url_parts['path']);
 
         if (count($path_parts) <= 1) {

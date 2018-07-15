@@ -30,3 +30,8 @@ crawlers.
 
 Use this at your own risk, please don't crawl sites of people that are not expecting it, the risk is all yours
 
+
+## Simple Test Script
+
+A simple script for testing is included.
+

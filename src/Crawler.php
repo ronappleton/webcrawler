@@ -37,7 +37,7 @@ class Crawler
                 if (is_remote_file($href)) {
                     cli_message('Remote File! - ' . $href);
                     $page->addFile(new RemoteFileObject($url, $href));
-                } else {
+                } elseif (!contains($href, 'http') || contains($href, 'https')) {
                     cli_message('Remote Directory - ' . $href);
                     $page->addDirectory(new RemoteDirectoryObject($url, $href));
                 }
@@ -90,6 +90,30 @@ class Crawler
             return json_encode($this->toArray($directories, $files));
         }
 
+    }
+
+    public function logCrawling($filepath = null, $filename = null, $directories = true, $files = true, $json = true, $pretty = true)
+    {
+        if (empty($filename)) {
+            $filename = date('Y_m_d__H_m_s__') . 'site_crawl.json';
+        }
+
+        if (empty($filepath)) {
+            $fullpath = $filename;
+        } else {
+            if ($filepath[strlen($filepath)] !== DIRECTORY_SEPARATOR) {
+                $fullpath = implode(DIRECTORY_SEPARATOR, [$filepath, $filename]);
+            }
+            else {
+                $fullpath = $filepath . $filename;
+            }
+        }
+
+        $handle = fopen($fullpath, 'w');
+
+        fwrite($handle, $this->toJson(false, true,true));
+
+        fclose($handle);
     }
 
 }
