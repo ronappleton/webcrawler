@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace RonAppleton\WebCrawler;
 
-use App\Components\Client;
-use App\Objects\RemoteDirectoryObject;
-use App\Objects\RemoteFileObject;
-use App\Objects\WebPage;
+use RonAppleton\WebCrawler\Components\Client;
+use RonAppleton\WebCrawler\Objects\RemoteDirectoryObject;
+use RonAppleton\WebCrawler\Objects\RemoteFileObject;
+use RonAppleton\WebCrawler\Objects\WebPage;
 use Carbon\Carbon;
 
 class Crawler

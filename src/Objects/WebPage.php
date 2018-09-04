@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Objects;
+namespace RonAppleton\WebCrawler\Objects;
 
-use App\Transformers\RDOTransformer;
-use App\Transformers\RFOTransformer;
+use RonAppleton\WebCrawler\Transformers\RDOTransformer;
+use RonAppleton\WebCrawler\Transformers\RFOTransformer;
 
 class WebPage
 {

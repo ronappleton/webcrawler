@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Transformers;
+namespace RonAppleton\WebCrawler\Transformers;
 
-use App\Objects\RemoteFileObject;
+use RonAppleton\WebCrawler\Objects\RemoteFileObject;
 
 class RFOTransformer
 {

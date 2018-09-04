@@ -2,7 +2,7 @@
 
 require ('vendor/autoload.php');
 
-use App\Crawler;
+use RonAppleton\WebCrawler\Crawler;
 
 class Runner {
 

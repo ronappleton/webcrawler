@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Objects;
+namespace RonAppleton\WebCrawler\Objects;
 
 class RemoteDirectoryObject
 {

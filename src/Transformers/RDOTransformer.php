@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Transformers;
+namespace RonAppleton\WebCrawler\Transformers;
 
-use App\Objects\RemoteDirectoryObject;
+use RonAppleton\WebCrawler\Objects\RemoteDirectoryObject;
 
 class RDOTransformer
 {

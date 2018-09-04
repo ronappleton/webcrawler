@@ -1,5 +1,7 @@
 {
     "name": "ronappleton/webcrawler",
+    "description": "Webcrawler for crawling indexed sites",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ron Appleton",
@@ -12,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "RonAppleton\\WebCrawler\\": "src/"
         },
       "files": [
         "helpers.php"

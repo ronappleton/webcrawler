@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components;
+namespace RonAppleton\Webcrawler\Components;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
