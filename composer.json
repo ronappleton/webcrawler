@@ -1,6 +1,6 @@
 {
     "name": "ronappleton/webcrawler",
-    "description": "Webcrawler for crawling indexed sites",
+    "description": "Webcrawler for crawling indexed sites i.e. options and indexes",
     "license": "MIT",
     "authors": [
         {
