@@ -44,10 +44,8 @@ class Crawler
             $href = $link->getAttribute('href');
             if (!contains($href, '..')) {
                 if (is_remote_file($href) && !is_web_file($href)) {
-                    cli_message('Remote File! - ' . $href);
                     $page->addFile(new RemoteFileObject($url, $href));
                 } elseif ((!contains($href, 'http') || contains($href, 'https')) && !is_a_remote_file($href)) {
-                    cli_message('Remote Directory - ' . $href);
                     $page->addDirectory(new RemoteDirectoryObject($url, $href));
                 }
             }
@@ -65,6 +63,8 @@ class Crawler
         }
         $this->crawl_end = Carbon::now();
         $this->crawl_time = $this->crawl_end->diffForHumans($this->crawl_start);
+
+        return $this;
     }
 
     public function getPages()
