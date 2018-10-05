@@ -27,7 +27,7 @@ class Client
             }
 
             if (!empty($result)) {
-                return $result->getBody();
+                return $result->getBody()->getContents();
             }
 
             return '';
