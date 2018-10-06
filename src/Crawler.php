@@ -15,7 +15,7 @@ class Crawler
     private $crawl_end;
     private $crawl_time;
 
-    public function crawl($url = '', $restrict_domain = true, $ignore_web_files = true)
+    public function crawl($url = '', $restrict_domain = true, $ignore_web_files = true, $crawl_recursive = false)
     {
         if (empty($url)) {
             return null;
@@ -52,6 +52,14 @@ class Crawler
         }
 
         $this->pages[] = $page;
+
+
+        if(!$crawl_recursive) {
+            /**
+             * return RonAppleton\WebCrawler\Objects\WebPage $page
+             */
+            return $page;
+        }
 
         foreach ($page->getDirectories() as $directory) {
             if ($restrict_domain) {
