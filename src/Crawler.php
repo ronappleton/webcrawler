@@ -59,7 +59,10 @@ class Crawler
                     continue;
                 }
             }
-            $this->crawl($directory->getPath());
+
+            if ($directory->getPath() != $url) {
+                $this->crawl($directory->getPath());
+            }
         }
         $this->crawl_end = Carbon::now();
         $this->crawl_time = $this->crawl_end->diffForHumans($this->crawl_start);
